@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="d-flex flex-column text-center vh-100 justify-content-center align-items-center">
+        <div class="row">
+            <div class="d-flex flex-column text-center justify-content-center align-items-center">
                 <div class="">
                     <h1>Payment Information</h1>
                     <p>You will be charged <strong class="text-primary">${{ number_format($plan->cost, 2) }}</strong>  for <strong class="text-success">{{ $plan->name }}</strong> Plan</p>
@@ -37,6 +37,31 @@
                     </form>
                 </div>
             </div>
+
+            <div class="d-flex justify-content-center mt-5">
+                <table class="w-25">
+                    <tr>
+                        <td colspan="2"><strong>Example Card Information</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Card Number</td>
+                        <td><code>4242 4242 4242 4242</code></td>
+                    </tr>
+                    <tr>
+                        <td>MM/YY</td>
+                        <td><code>12/24</code></td>
+                    </tr>
+                    <tr>
+                        <td>CVC</td>
+                        <td><code>123</code></td>
+                    </tr>
+                    <tr>
+                        <td>ZIP</td>
+                        <td><code>12345</code></td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
     </div>
 @endsection

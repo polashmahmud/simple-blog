@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class subscriptionController extends Controller
 {
@@ -12,6 +15,28 @@ class subscriptionController extends Controller
     public function __construct()
     {
         $this->stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+    }
+
+    public function success(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+
+        $subscription = DB::table('subscriptions')
+            ->where('user_id', $user->id)
+            ->latest()
+            ->first();
+
+        if ($subscription->ends_at == null && $subscription->trial_ends_at == null) {
+            DB::table('subscriptions')
+                ->where('id', $subscription->id)
+                ->update([
+                    'ends_at' => Carbon::now()->addDays(30),
+                ]);
+        } else {
+            return view('common.paymentFailed');
+        }
+
+        return view('common.paymentSuccess');
     }
 
     public function create(Request $request, Plan $plan)
@@ -28,7 +53,9 @@ class subscriptionController extends Controller
                 'email' => $user->email,
             ]);
 
-        return redirect()->route('home')->with('success', 'Your plan subscribed successfully');
+
+
+        return redirect('/subscription?success=true&email=' . $user->email . '&stripe_id=' . $user->stripe_id . '&token=' . substr(md5(uniqid(rand(), true)), 16, 16));
     }
 
     public function createPlan()
