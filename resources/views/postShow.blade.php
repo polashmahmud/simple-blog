@@ -56,37 +56,12 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            @forelse($posts as $post)
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{ route('home.show', $post->id) }}">
-                                {{ $post->title }}
-                            </a>
-                        </h5>
-                        <p class="card-text">
-                            {{Str::limit($post->description, 190, '....')}}
-                        </p>
-                        <p class="card-text d-flex justify-content-between">
-                            <small class="text-muted">
-                                Update: {{ $post->created_at->diffForHumans() }}
-                            </small>
-                            <small class="text-muted">
-                                Auther: {{ $post->user->name }}
-                            </small>
-
-                        </p>
-                    </div>
+        <div class="col-md-8 mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center">{{ $post->title }}</h1>
+                    <p>{{ $post->description }}</p>
                 </div>
-            @empty
-                    <div class="d-flex justify-content-center align-items-center text-center vh-100">
-                        <h3>No data found, Add a new <a href="{{ route('posts.create') }}">post</a> </h3>
-                    </div>
-            @endforelse
-
-            <div class="d-flex justify-content-center mt-5">
-                {!! $posts->links() !!}
             </div>
         </div>
     </div>
