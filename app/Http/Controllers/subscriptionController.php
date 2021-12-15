@@ -32,6 +32,9 @@ class subscriptionController extends Controller
                 ->update([
                     'ends_at' => Carbon::now()->addDays(30),
                 ]);
+
+            User::where('id', $user->id)->update(['package' => 1]);
+
         } else {
             return view('common.paymentFailed');
         }
@@ -52,8 +55,6 @@ class subscriptionController extends Controller
             ->create($paymentMethod, [
                 'email' => $user->email,
             ]);
-
-
 
         return redirect('/subscription?success=true&email=' . $user->email . '&stripe_id=' . $user->stripe_id . '&token=' . substr(md5(uniqid(rand(), true)), 16, 16));
     }
@@ -93,5 +94,24 @@ class subscriptionController extends Controller
         Plan::create($data);
 
         return redirect()->route('plans.index')->with('success', 'Plan created successfully');
+    }
+
+    public function cancel(Request $request)
+    {
+        $request->validate([
+            'subscription_id' => 'required',
+        ]);
+
+        DB::table('subscriptions')
+            ->where('id', $request->subscription_id)
+            ->update([
+                'ends_at' => Carbon::now(),
+                'stripe_status' => 'deactivated'
+            ]);
+
+        auth()->user()->update(['package' => 0]);
+
+        return redirect()->route('plans.index')
+            ->with('success', 'Subscription cancelled successfully');
     }
 }

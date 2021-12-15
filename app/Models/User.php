@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'package'
     ];
 
     /**
@@ -51,6 +53,16 @@ class User extends Authenticatable
     public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(\App\Models\Post::class);
+    }
+
+    public function isAdmin()
+    {
+        return auth()->user()->role === 1;
+    }
+
+    public function isFree()
+    {
+        return auth()->user()->package === 0;
     }
 
 }

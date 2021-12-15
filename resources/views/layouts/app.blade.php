@@ -55,15 +55,8 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('plans.index') }}">Plans</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('posts.index') }}">All Post</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('settings') }}">Settings</a>
-                        </li>
-
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -89,7 +82,9 @@
     </nav>
 
     <main class="py-4">
-        @include('common.packageNotification')
+        @auth
+            @include('common.packageNotification')
+        @endauth
         @yield('content')
     </main>
 </div>
