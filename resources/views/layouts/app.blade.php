@@ -55,6 +55,9 @@
                         @endif
                     @else
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('plans.index') }}">Plans</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('posts.index') }}">All Post</a>
                         </li>
                         <li class="nav-item dropdown">
@@ -85,5 +88,6 @@
         @yield('content')
     </main>
 </div>
+@yield('scripts')
 </body>
 </html>
