@@ -43,7 +43,17 @@
                                     <textarea rows="5" name="description" placeholder="Post Description" class="form-control" id="postDescription">{{ old('description') }}</textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Add New</button>
+                                <div class="mb-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="inlineRadio1" checked type="radio" name="is_published" value="1">
+                                        <label class="form-check-label" for="inlineRadio1" >Published</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="inlineRadio2" type="radio" name="is_published" value="0">
+                                        <label class="form-check-label" for="inlineRadio2">Draft</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Published</button>
                             </form>
                     </div>
                 </div>

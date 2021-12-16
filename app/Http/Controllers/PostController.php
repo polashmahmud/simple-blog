@@ -6,6 +6,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -24,9 +25,15 @@ class PostController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = auth()->user()->posts()->latest()->paginate(10);
+        if ($request->is_published == 'true') {
+            $posts = auth()->user()->posts()->where('is_published', true)->latest()->paginate(10);
+        } else if ($request->is_published == 'false') {
+            $posts = auth()->user()->posts()->where('is_published', false)->latest()->paginate(10);
+        } else {
+            $posts = auth()->user()->posts()->latest()->paginate(10);
+        }
 
         return view('post.index', compact('posts'));
     }

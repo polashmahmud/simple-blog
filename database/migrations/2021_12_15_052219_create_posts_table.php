@@ -18,6 +18,9 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->longText('description');
+            $table->boolean('is_published')
+                ->default(true)
+                ->comment('0: unpublished, 1: published');
             $table->timestamps();
 
             $table->foreign('user_id')

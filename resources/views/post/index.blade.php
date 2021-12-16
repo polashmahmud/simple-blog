@@ -12,7 +12,11 @@
 
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <div>All Post</div>
+                        <div>
+                            <a href="{{ url('/posts?is_published=all') }}" class="btn btn-sm {{ request()->get('is_published') != 'true' && request()->get('is_published') != 'false' ? 'btn-primary' : 'btn-outline-primary' }}">All</a>
+                            <a href="{{ url('/posts?is_published=true') }}" class="btn btn-sm {{ request()->get('is_published') == 'true' ? 'btn-success' : 'btn-outline-success' }}">Published</a>
+                            <a href="{{ url('/posts?is_published=false') }}" class="btn btn-sm {{ request()->get('is_published') == 'false' ? 'btn-dark' : 'btn-outline-dark' }}">Draft</a>
+                        </div>
                         <a href="{{ route('posts.create') }}" class="btn btn-sm btn-secondary">
                             <svg style="width: 20px; height: 20px" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                  xmlns="http://www.w3.org/2000/svg">

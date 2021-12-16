@@ -67,6 +67,29 @@
                     </form>
                 </div>
             </div>
+
+            <div class="d-flex justify-content-center mt-5">
+                <table class="table w-50 table-sm">
+                    <tr>
+                        <td colspan="3" class="text-center"><h5>Login Information</h5></td>
+                    </tr>
+                    <tr>
+                        <td><strong>User</strong></td>
+                        <td><strong>Password</strong></td>
+                        <td><strong>Role</strong></td>
+                    </tr>
+                    <tr>
+                        <td><code>admin@example.com</code></td>
+                        <td><code>password</code></td>
+                        <td>Admin</td>
+                    </tr>
+                    <tr>
+                        <td><code>john@example.com</code></td>
+                        <td><code>password</code></td>
+                        <td>User</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>
