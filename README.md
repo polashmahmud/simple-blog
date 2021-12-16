@@ -1,66 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Simple Blog
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About Simple Blog
 
-## About Laravel
+This is basically an example blog. Make it using Laravel 8. When I was interview for a job at a company they give me this tasks.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Task Overview:**
+You are requested to create a simple online publishing platform(something like medium) with a membership option. The platform will offer free membership and premium membership to the members. Free members will be able to create 2 posts daily whereas the premium members will be able to create unlimited posts.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Required Features:**
+1) Membership upgrade & downgrade(Free members can update to premium plan and premium members can downgrade to the free plan. You may use stripe to handle the payment.)
+2) Post create(Members will be able to create posts based on their membership quota. Each post must have a minimum of 2 fields and these are title and description.)
+3) Seeding(You may use laravel Seeder to seed your database with data using seed classes)
+4) Task scheduling(Premium members will be able to schedule their posts and the posts will be automatically published at their scheduled time.)
+5) Mail queue(The admin will receive mail once a member publishes a post. You may use the mail queue to speed up processing.)
+6) Cache(You may use Laravel Cache to load the post from cache instated of loading from the database.)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Not Mandatory:**
+1) Frontend design. We aren't concerned about the frontend design. The frontend can be very basic and you are allowed to use any free fronted template or other resources.
+2) You may leave the post comments and reactions part. This is not mandatory but if you want can implement it.
+3) Post edit or delete option is not mandatory. It will be a bonus if you can implement it.
 
-## Learning Laravel
+**Tools & Technologies:**
+1) It is required to use the latest version of laravel.
+2) If you are using bootstrap then you must use at least bootstrap 4.
+3) Using Vue or React is not mandatory. But if you already know Vue or React then you can use Vue or React. It will increase your hiring possibility.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Install Project
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```javascript
+git clone git@github.com:polashmahmud/simple-blog.git
+```
 
-## Laravel Sponsors
+```javascript
+cd simple-blog
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```javascript
+cp .env.example .env
+```
 
-### Premium Partners
+Note: Update .env file information. Like: add database, mail information
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+```javascript
+composer update
+```
 
-## Contributing
+```javascript
+composer update
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```javascript
+ php artisan migrate:fresh --seed
+```
 
-## Code of Conduct
+```javascript
+ php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Then Open projects on your browser. 
 
-## Security Vulnerabilities
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/1.png)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Login using admin user information and make a Payment package
 
-## License
+`Login->Dashboard->Upgrade Package`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/2.png)
+
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/3.png)
+
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/4.png)
+
+Now all done :)
+
+Some Picture
+
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/5.png)
+
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/6.png)
+
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/7.png)
+
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/8.png)
+
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/9.png)
+
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/10.png)
+
+![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/11.png)
