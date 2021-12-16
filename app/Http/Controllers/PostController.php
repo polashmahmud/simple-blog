@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Jobs\SendEmail;
+use App\Mail\PublishedPost;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -56,7 +59,14 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        auth()->user()->posts()->create($request->validated());
+       $post = auth()->user()->posts()->create($request->validated());
+
+        $admins = User::where('role', 1)->get();
+
+        foreach ($admins as $admin) {
+//            Mail::to($admin->email)->send(new PublishedPost($post));
+            $this->dispatch(new SendEmail($admin, $post));
+        }
 
         return redirect()->route('posts.index')
             ->with('success', 'Post create successfully');
