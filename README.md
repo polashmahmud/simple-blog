@@ -65,26 +65,26 @@ Login using admin user information and make a Payment package
 
 `Login->Dashboard->Upgrade Package`
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/2.png)
+![](../main/public/images/readme/2.png)
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/3.png)
+![](../main/public/images/readme/3.png)
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/4.png)
+![](../main/public/images/readme/4.png)
 
 Now all done :)
 
 Some Picture
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/5.png)
+![](../main/public/images/readme/5.png)
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/6.png)
+![](../main/public/images/readme/6.png)
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/7.png)
+![](../main/public/images/readme/7.png)
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/8.png)
+![](../main/public/images/readme/8.png)
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/9.png)
+![](../main/public/images/readme/9.png)
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/10.png)
+![](../main/public/images/readme/10.png)
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/11.png)
+![](../main/public/images/readme/11.png)
