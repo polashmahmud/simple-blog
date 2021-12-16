@@ -59,7 +59,7 @@ composer update
 
 Then Open projects on your browser. 
 
-![](/Users/polashmahmud/Learn/simple-blog/public/images/readme/1.png)
+![Screenshot](../main/public/images/readme/1.png)
 
 Login using admin user information and make a Payment package
 
