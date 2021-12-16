@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Helper;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -16,10 +18,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user')
-            ->where('published_at', '<=', now()->toDateTimeString())
-            ->latest()
-            ->paginate(5);
+        $currentPage = request()->get('page',1);
+
+        $posts = cache()->remember('homepage-cache' . $currentPage, now()->addHour(2),  function () {
+            return Post::with('user')
+                ->where('published_at', '<=', now()->toDateTimeString())
+                ->latest()
+                ->paginate(5);
+        });
         return view('welcome', compact('posts'));
     }
 
