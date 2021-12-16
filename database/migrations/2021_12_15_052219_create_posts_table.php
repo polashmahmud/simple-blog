@@ -21,6 +21,9 @@ class CreatePostsTable extends Migration
             $table->boolean('is_published')
                 ->default(true)
                 ->comment('0: unpublished, 1: published');
+            $table->timestamp('published_at')
+                ->nullable()
+                ->default(now());
             $table->timestamps();
 
             $table->foreign('user_id')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,7 +16,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user')->latest()->paginate(5);
+        $posts = Post::with('user')
+            ->where('published_at', '<=', now()->toDateTimeString())
+            ->latest()
+            ->paginate(5);
         return view('welcome', compact('posts'));
     }
 

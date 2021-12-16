@@ -19,7 +19,11 @@
                     <div class="card-header d-flex justify-content-between">
                         <div>Edit Post</div>
                         <a href="{{ route('posts.index') }}" class="btn btn-sm btn-secondary">
-                            <svg style="width: 20px; height: 20px" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                            <svg style="width: 20px; height: 20px" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
                             Back
                         </a>
                     </div>
@@ -37,23 +41,38 @@
 
                             <div class="form-group mb-3">
                                 <label for="postTitle">Post Title</label>
-                                <input type="text" name="title" value="{{ $post->title }}" placeholder="Post Title" class="form-control" id="postTitle">
+                                <input type="text" name="title" value="{{ $post->title }}" placeholder="Post Title"
+                                       class="form-control" id="postTitle">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="postDescription">Post Description</label>
-                                <textarea rows="5" name="description" placeholder="Post Description" class="form-control" id="postDescription">{{ $post->description }}</textarea>
+                                <textarea rows="5" name="description" placeholder="Post Description"
+                                          class="form-control" id="postDescription">{{ $post->description }}</textarea>
                             </div>
 
                             <div class="mb-3">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" id="inlineRadio1" @if($post->is_published == 1) checked @endif type="radio" name="is_published" value="1">
-                                    <label class="form-check-label" for="inlineRadio1" >Published</label>
+                                    <input class="form-check-input" id="inlineRadio1"
+                                           @if($post->is_published == 1) checked @endif type="radio" name="is_published"
+                                           value="1">
+                                    <label class="form-check-label" for="inlineRadio1">Published</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" id="inlineRadio2" @if($post->is_published == 0) checked @endif type="radio" name="is_published" value="0">
+                                    <input class="form-check-input" id="inlineRadio2"
+                                           @if($post->is_published == 0) checked @endif type="radio" name="is_published"
+                                           value="0">
                                     <label class="form-check-label" for="inlineRadio2">Draft</label>
                                 </div>
                             </div>
+
+                            @if(!auth()->user()->isFree())
+                                <div class="form-group mb-3">
+                                    <label for="postDate">Published Date</label>
+                                    <input type="datetime-local" name="published_at"
+                                           value="{{old('time')?? date('Y-m-d\TH:i', strtotime($post->published_at)) }}"
+                                           placeholder="Post Published Date" class="form-control" id="postDate">
+                                </div>
+                            @endif
 
                             <button type="submit" class="btn btn-primary">Update Post</button>
                         </form>

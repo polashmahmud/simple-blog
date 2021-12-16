@@ -9,7 +9,11 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'is_published'];
+    protected $fillable = ['title', 'description', 'is_published', 'published_at'];
+
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
 
     public function user()
     {

@@ -26,7 +26,8 @@ class StorePostRequest extends FormRequest
         return [
             'title'        => 'required',
             'description'  => 'required',
-            'is_published' => 'required'
+            'is_published' => 'required',
+            'published_at' => 'nullable|date',
         ];
     }
 }

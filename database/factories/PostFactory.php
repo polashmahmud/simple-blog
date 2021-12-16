@@ -19,6 +19,7 @@ class PostFactory extends Factory
             'description'  => $this->faker->text,
             'user_id'      => User::all()->random()->id,
             'is_published' => $this->faker->boolean,
+            'published_at' => $this->faker->dateTime,
         ];
     }
 }
